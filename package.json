@@ -1,0 +1,83 @@
+{
+  "name": "dynamic-time-shifting-desktop",
+  "productName": "Dynamic Time-shifting Desktop",
+  "version": "1.0.0-alpha.1",
+  "description": "A cross-platform (Windows and Linux) app that changes automatically the wallpaper throughout the day. You can create amazing time-shifts like on the dynamic desktop feature of macOS Mojave",
+  "main": "./app/main.js",
+  "scripts": {
+    "start": "electron app",
+    "dev": "electron src",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "keywords": [
+    "Windows",
+    "Wallpaper",
+    "Desktop",
+    "Dynamic",
+    "Time-shifting"
+  ],
+  "author": {
+    "name": "Samuel Carreira",
+    "email": "samuelcarreira@outlook.com",
+    "url": "http://www.samuelcarreira.com"
+  },
+  "bugs": {
+    "email": "samuelcarreira@outlook.com",
+    "url": "https://github.com/samuelcarreira/dynamic-time-shifting-desktop/issues"
+  },
+  "copyright": "© 2018, Samuel Carreira",
+  "homepage": "https://github.com/samuelcarreira/dynamic-time-shifting-desktop",
+  "engines": {
+    "node": ">=7.6"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^2.0.2",
+    "electron-builder": "^20.15.1",
+    "gulp": "^3.9.1",
+    "gulp-babel-minify": "^0.4.3",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-open": "^3.0.1",
+    "gulp-prompt": "^1.0.1",
+    "gulp-shell": "^0.6.5",
+    "replace-in-file": "^3.4.0",
+    "run-sequence": "^2.2.1"
+  },
+  "build": {
+    "appId": "com.samuelcarreira.dynamic-time-shifting-desktop",
+    "compression": "store",
+    "asar": true,
+    "copyright": "© 2018, Samuel Carreira",
+    "files": [
+      "!**/node_modules/*/{CHANGELOG.md,CONTRIBUTING.md,QuickStartGuide.wiki,CHANGES.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples,*.d.ts}",
+      "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,__pycache__,thumbs.db,.gitignore,.gitattributes,.editorconfig,.flowconfig,.yarn-metadata.json,.idea,appveyor.yml,.travis.yml,circle.yml,npm-debug.log,.nyc_output,yarn.lock,.yarn-integrity}"
+    ],
+    "extraFiles": [
+      "OPENSOURCELICENSES.txt"
+    ],
+    "directories": {
+      "output": "release-builds"
+    },
+    "win": {
+      "target": [{
+        "target": "dir",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }],
+      "legalTrademarks": "2018 © Samuel Carreira",
+      "icon": "./build/icon.ico",
+      "publisherName": "SamuelCarreira"
+    }
+  }
+}

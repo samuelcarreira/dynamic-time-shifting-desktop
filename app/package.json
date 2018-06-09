@@ -1,0 +1,36 @@
+{
+    "name": "dynamic-time-shifting-desktop",
+    "productName": "Dynamic Time-shifting Desktop",
+    "version": "1.0.0-alpha.1",
+    "description": "A cross-platform (Windows and Linux) app that changes automatically the wallpaper throughout the day. You can create amazing time-shifts like on the dynamic desktop feature of macOS Mojave",
+    "main": "main.js",
+    "keywords": [
+        "Windows",
+        "Wallpaper",
+        "Desktop",
+        "Dynamic",
+        "Time shifting"
+    ],
+    "author": {
+        "name": "Samuel Carreira",
+        "email": "samuelcarreira@outlook.com",
+        "url": "http://www.samuelcarreira.com"
+    },
+    "bugs": {
+        "email": "samuelcarreira@outlook.com",
+        "url": "https://github.com/samuelcarreira/dynamic-time-shifting-desktop/issues"
+    },
+    "copyright": "© 2018, Samuel Carreira",
+    "homepage": "https://github.com/samuelcarreira/dynamic-time-shifting-desktop",
+    "engines": {
+        "node": ">=7.6"
+    },
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "auto-launch": "^5.0.5",
+        "electron-store": "^2.0.0",
+        "wallpaper": "^3.0.0",
+        "winston": "^2.4.2"
+    }
+}
