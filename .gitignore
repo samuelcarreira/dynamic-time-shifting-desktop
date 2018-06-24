@@ -6,7 +6,8 @@ yarn.lock
 build
 release-builds
 artwork
-src
+src/assets
+src/*.html
 webserver
 
 gulpfile.js
