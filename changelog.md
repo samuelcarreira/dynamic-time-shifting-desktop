@@ -1,5 +1,5 @@
 ﻿2018-06-23 v.1.0.1
-	- Updated log libray
+	- Updated log library
 	- Updated to electron 2.0.3
 	- Checking for updates functionality
 

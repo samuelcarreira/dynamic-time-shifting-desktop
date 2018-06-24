@@ -16,7 +16,7 @@ https://dl.orangedox.com/dynamic-time-shifting-desktop
 
 or go to releases page:
 
-https://github.com/samuelcarreira/dynamic-time-shifting-desktop/releases´
+https://github.com/samuelcarreira/dynamic-time-shifting-desktop/releases
 
 **NOTE: Ignore Security Warnings. This app wasn't signed with an enterprise certificate**
 
