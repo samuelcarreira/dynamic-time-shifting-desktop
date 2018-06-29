@@ -1,7 +1,7 @@
 {
     "name": "dynamic-time-shifting-desktop",
     "productName": "Dynamic Time-shifting Desktop",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A cross-platform (Windows and Linux) app that changes automatically the wallpaper throughout the day. You can create amazing time-shifts like on the dynamic desktop feature of macOS Mojave",
     "main": "main.js",
     "keywords": [

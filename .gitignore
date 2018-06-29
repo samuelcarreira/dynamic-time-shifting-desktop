@@ -9,6 +9,7 @@ artwork
 src/assets
 src/*.html
 webserver
+sample-wallpapers
 
 gulpfile.js
 yarn.lock

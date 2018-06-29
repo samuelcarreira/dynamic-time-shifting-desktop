@@ -66,7 +66,7 @@ function checkReadPermissions(filepath) {
         throw new TypeError('Filepath must be a string');
       }
   
-      fs.access(filepath, fs.constants.R_OK, (err) => {
+      fs.access(path.normalize(filepath), fs.constants.R_OK, (err) => {
         if (err) {
           //console.log(`${filepath} is not readable. Error ${err}`);
           resolve(false);

@@ -1,7 +1,7 @@
 {
   "name": "dynamic-time-shifting-desktop",
   "productName": "Dynamic Time-shifting Desktop",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A cross-platform (Windows and Linux) app that changes automatically the wallpaper throughout the day. You can create amazing time-shifts like on the dynamic desktop feature of macOS Mojave",
   "main": "./app/main.js",
   "scripts": {
@@ -60,6 +60,7 @@
       "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
       "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,__pycache__,thumbs.db,.gitignore,.gitattributes,.editorconfig,.flowconfig,.yarn-metadata.json,.idea,appveyor.yml,.travis.yml,circle.yml,npm-debug.log,.nyc_output,yarn.lock,.yarn-integrity}"
     ],
+    "extraResources": "./sample-wallpapers",
     "extraFiles": [
       "OPENSOURCELICENSES.txt"
     ],
@@ -67,15 +68,13 @@
       "output": "release-builds"
     },
     "win": {
-      "target": [
-        {
-          "target": "dir",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ],
+      "target": [{
+        "target": "dir",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }],
       "legalTrademarks": "2018 © Samuel Carreira",
       "icon": "./build/icon.ico",
       "publisherName": "SamuelCarreira"
@@ -91,15 +90,13 @@
       "packageCategory": "Utility",
       "synopsis": "A cross-platform app that changes automatically the wallpaper throughout the day",
       "icon": "./build/icons",
-      "target": [
-        {
-          "target": "deb",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ],
+      "target": [{
+        "target": "deb",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }],
       "maintainer": "Samuel Carreira <samuelcarreira@outlook.com>",
       "desktop": {
         "Encoding": "UTF-8"
@@ -109,8 +106,7 @@
       "background": "./build/appdmg.png",
       "icon": "./build/icon.icns",
       "iconSize": 128,
-      "contents": [
-        {
+      "contents": [{
           "x": 380,
           "y": 240,
           "type": "link",

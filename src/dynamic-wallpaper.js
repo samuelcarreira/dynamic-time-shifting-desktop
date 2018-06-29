@@ -9,9 +9,14 @@
 
 'use strict';
 
+const EventEmitter = require('events').EventEmitter;
+const { promisify } = require('util');
+const exec = promisify(require('child_process').exec);
+const execFile = promisify(require('child_process').execFile);
+
 const wallpaper = require('wallpaper');
 const fsoperations = require('./fsoperations');
-const EventEmitter = require('events').EventEmitter;
+
 
 module.exports = class DynamicWallpaper extends EventEmitter {
     /**
@@ -23,6 +28,7 @@ module.exports = class DynamicWallpaper extends EventEmitter {
 
         this._wallpapers = wallpapers;
         this.init();
+        this._linuxDesktop = null;
     }
 
     /**
@@ -85,6 +91,30 @@ module.exports = class DynamicWallpaper extends EventEmitter {
     }
 
     /**
+     * Retreive current Linux desktop environment
+     * Experimental feature (tested with ubuntu 18.x and
+     * lubuntu 18.x)
+     * @returns {string|boolean} gnome, lxde or false (if
+     *                           no matches found)
+     */
+    async getDesktopEnv() {
+        try {
+            const result = await exec('echo $XDG_CURRENT_DESKTOP');
+
+            if (result.includes('GNOME')) {
+                return 'gnome';
+            } else if (result.includes('LXDE')) {
+                return 'lxde';
+            } else {
+                return false;
+            }
+        } catch (err) {
+            console.error(`Get desktop environment: ${err}`);
+            return false;
+        }
+    }
+
+    /**
      * Startup function:
      * calculate wallpaper and create a recurrent task
      */
@@ -113,7 +143,7 @@ module.exports = class DynamicWallpaper extends EventEmitter {
         if (percentage < 0) {
             percentage = 0;
         }
-        if (percentage>1) {
+        if (percentage > 1) {
             percentage = 1;
         }
 
@@ -145,10 +175,12 @@ module.exports = class DynamicWallpaper extends EventEmitter {
      */
     async changeWallpaper(newWallpaperFile) {
         try {
-            const currentWallpaper = await this.currentSystemWallpaper;
+            if (!this._linuxDesktop === null) {
+                const currentWallpaper = await this.currentSystemWallpaper;
 
-            if (currentWallpaper === newWallpaperFile) {
-                return; // no need to change wallpaper
+                if (currentWallpaper === newWallpaperFile) {
+                    return; // no need to change wallpaper
+                }
             }
 
             const isReadable = await fsoperations.checkReadPermissions(newWallpaperFile);
@@ -158,7 +190,42 @@ module.exports = class DynamicWallpaper extends EventEmitter {
                 return;
             }
 
-            wallpaper.set(newWallpaperFile);
+            if (process.platform === 'linux') {
+                if (this._linuxDesktop === null) {
+                    this._linuxDesktop = await this.getDesktopEnv();
+                }
+
+                if (this._linuxDesktop === 'gnome') {
+                    // for ubuntu
+                    execFile('gsettings', ['set', 'org.gnome.desktop.background', 'picture-uri', `'file://${newWallpaperFile}'`], (err) => {
+                        if (err) {
+                            global.Log.error(`Cannot change wallpaper: ${err}`);
+                            return;
+                        }
+                    });
+                } else if (this._linuxDesktop === 'lxde') {
+                    exec(`pcmanfm --set-wallpaper='${newWallpaperFile}'`, (err) => {
+                        if (err) {
+                            global.Log.error(`Cannot change wallpaper: ${err}`);
+                            return;
+                        }
+                    });
+                } else {
+                    wallpaper.set(newWallpaperFile);
+                }
+
+                // cp.execFile('gsettings', ['set', 'org.gnome.desktop.background', 'picture-uri', '/home/samc/Imagens/marguerite-daisy-beautiful-beauty.jpg'], (err, stdout) => {
+                //     if (err) {
+                //         console.error(err);
+                //         return;
+                //     }
+
+                //     console.log(stdout)
+                // })
+
+            } else {
+                wallpaper.set(newWallpaperFile);
+            }
 
             this.emit('wallpaperChanged');
 

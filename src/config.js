@@ -26,7 +26,7 @@ const ISDEV = isEnvSet ? getFromEnv : (process.defaultApp ||
 
 /**
  * Generate the default included sample images fullpath
- * all images are stored on userData/sample-wallpapers folder
+ * all images are stored on root/resources/sample-wallpapers folder
  * name 01.jpeg ... 16.jpeg
  * 
  * @returns {array} all files fullpath and filename
@@ -35,12 +35,21 @@ function generateSampleImageList() {
     let wallpapers = new Array();
 
     for (let i=1; i <= 16; i+=1) {
-        const filename = path.join(app.getPath('userData'), 'sample-wallpapers', `${i < 10 ? '0' + i.toString() : i}.jpeg`);
+        const filename = path.join(path.dirname(app.getPath("exe")), 'resources' ,'sample-wallpapers', `${i < 10 ? '0' + i.toString() : i}.jpeg`)
+        //const filename = path.join(app.getPath('userData'), 'sample-wallpapers', `${i < 10 ? '0' + i.toString() : i}.jpeg`);
         wallpapers.push(filename);
     }
 
     return wallpapers;
 }
+
+// function initialWallpapers() {
+//     if (process.platform === 'win32') {
+//         return generateSampleImageList();
+//     } else {
+//         return new Array(); // empty array
+//     }
+// }
 
 /**
  * Default settings
