@@ -1,9 +1,9 @@
 # Dynamic Time-shifting Desktop
 A cross-platform (Windows and Linux) app that changes automatically the wallpaper throughout the day. You can create amazing time-shifts like on the dynamic desktop feature of macOS Mojave
 
-![preview](https://gitlab.com/samuelcarreira/dynamic-time-shifting-desktop/raw/d01406c8a084d3fd0c49c7e8d9d35bfefe50ce71/gif-preview.gif)
+![preview](https://raw.githubusercontent.com/samuelcarreira/dynamic-time-shifting-desktop/master/gif-preview.gif)
 
-![preview](https://gitlab.com/samuelcarreira/dynamic-time-shifting-desktop/raw/master/preview-app.jpg)
+![preview](https://raw.githubusercontent.com/samuelcarreira/dynamic-time-shifting-desktop/master/preview-app.jpg)
 
 ## Highlights
 - Completly free and open source software
@@ -36,7 +36,7 @@ When I saw the new Apple macOS X Mojave dynamic desktop feature I searched onlin
 - [x]  New app icon
 - [ ]  Interface improvements
 - [x]  Check for updates feature
-- [ ]  Linux compilations
+- [x]  Linux compilations
 - [ ]  Code revision for bug squashing
 
 ## FAQ
