@@ -12,9 +12,7 @@ A cross-platform (Windows and Linux) app that changes automatically the wallpape
 - Includes the macOS X Mojave dynamic desktop wallpaper (Full HD resolution images)
 
 ## Download
-https://dl.orangedox.com/dynamic-time-shifting-desktop
-
-or go to releases page:
+go to releases page:
 
 https://github.com/samuelcarreira/dynamic-time-shifting-desktop/releases
 
